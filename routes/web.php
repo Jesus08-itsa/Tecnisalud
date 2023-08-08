@@ -1,25 +1,8 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
-/* Route::get('/register', [RegisterController::class, 'show']);
-Route::post('/action-register', [RegisterController::class, 'register']); */
-
-Route::group(['namespace' => 'App\Http\Controllers'], function()
-{   
+Route::group(['namespace' => 'App\Http\Controllers'], function() {   
     /**
      * Home Routes
      */
@@ -37,7 +20,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::get('/login', 'LoginController@show')->name('login.show');
         Route::post('/login', 'LoginController@login')->name('login.perform');
-
     });
 
     Route::group(['middleware' => ['auth']], function() {
@@ -45,5 +27,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * Logout Routes
          */
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+
+        /**
+         * Crear Alarma Route
+         */
+        Route::get('/crear-alarma', 'AlarmaController@create')->name('alarma.create');
     });
 });
