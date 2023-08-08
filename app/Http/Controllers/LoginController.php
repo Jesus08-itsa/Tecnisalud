@@ -8,10 +8,9 @@ use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
-    //
     public function show()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return redirect()->route('home.index');
         }
         return view('auth.login');
@@ -21,17 +20,12 @@ class LoginController extends Controller
     {
         $credentials = $request->getCredentials();
         
-        if(!Auth::validate($credentials)):
-            dd('error');
-           return redirect()->to('login')
-                ->withErrors(trans('auth.failed'));
-        endif;
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
-        
+        if (Auth::attempt($credentials)) {
+            return $this->authenticated($request, Auth::user());
+        }
 
-        Auth::login($user);
-
-        return $this->authenticated($request, $user);
+        return redirect()->route('login.show')
+            ->withErrors(trans('auth.failed'));
     }
 
     protected function authenticated(Request $request, $user) 

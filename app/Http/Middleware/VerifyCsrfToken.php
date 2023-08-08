@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        'register.perform', // Agrega aquí la ruta que estás utilizando para el registro
+        // Agrega otras rutas que quieras excluir de la verificación CSRF si es necesario
     ];
 }
