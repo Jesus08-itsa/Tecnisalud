@@ -2,12 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
-Route::group(['namespace' => 'App\Http\Controllers'], function() {   
-    /**
-     * Home Routes
-     */
-    Route::get('/home', 'HomeController@index')->name('home.index');
-
+Route::group(['namespace' => 'App\Http\Controllers'], function() {
     Route::group(['middleware' => ['guest']], function() {
         /**
          * Register Routes
@@ -29,8 +24,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
 
         /**
-         * Crear Alarma Route
+         * Redirection Controller Routes
          */
-        Route::get('/crear-alarma', 'AlarmaController@create')->name('alarma.create');
+        Route::get('/redireccion-alarma', 'RedireccionController@redireccionCrearAlarma')->name('redireccion-alarma');
+        Route::get('/redireccion-consultar-horarios', 'RedireccionController@redireccionConsultarHorarios')->name('redireccion-consultar-horarios');
+        Route::get('/redireccion-escribir-profesional', 'RedireccionController@redireccionEscribirProfesional')->name('redireccion-escribir-profesional');
+        Route::get('/redireccion-registro-tomas', 'RedireccionController@redireccionRegistroTomas')->name('redireccion-registro-tomas');
+        Route::get('/redireccion-descargar-recetas', 'RedireccionController@redireccionDescargarRecetas')->name('redireccion-descargar-recetas');
+
+        /**
+         * HomeAdmin Route
+         */
+        Route::get('/home-admin', 'HomeAdminController@index')->name('home.admin');
+
+        /**
+         * HomeUser Route
+         */
+        Route::get('/home-user', 'HomeUsuarioController@index')->name('home.user');
     });
 });

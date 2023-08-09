@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -19,8 +18,9 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->getCredentials();
+        $remember = $request->has('remember'); // Verifica si está marcada la casilla "Recordar sesión"
         
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember)) {
             return $this->authenticated($request, Auth::user());
         }
 
@@ -30,6 +30,10 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user) 
     {
-        return redirect()->route('home.index');
+        if ($user->id_perfil == 1) { // Doctor
+            return redirect()->route('home.admin');
+        } else if ($user->id_perfil == 2) { // Paciente
+            return redirect()->route('home.user');
+        }
     }
 }

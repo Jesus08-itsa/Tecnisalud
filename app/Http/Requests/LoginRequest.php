@@ -37,22 +37,15 @@ class LoginRequest extends FormRequest
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getCredentials()
-    {
-        // The form field for providing username or password
-        // have name of "username", however, in order to support
-        // logging users in with both (username and email)
-        // we have to check if user has entered one or another
-        $username = $this->get('username');
+{
+    $username = $this->get('username');
 
-        if ($this->isEmail($username)) {
-            return [
-                'email' => $username,
-                'password' => $this->get('password')
-            ];
-        }
+    return [
+        'usuario' => $username,
+        'password' => $this->get('password')
+    ];
+}
 
-        return $this->only('username', 'password');
-    }
 
     /**
      * Validate if provided parameter is valid email.
