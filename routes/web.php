@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
@@ -41,5 +42,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
          * HomeUser Route
          */
         Route::get('/home-user', 'HomeUsuarioController@index')->name('home.user');
+
+        /**
+         * Profile Update Route
+         */
+        Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
+        
+        /**
+         * Consulta Medicamentos Route
+         */
+        Route::get('/consulta-medicamentos', 'ConsultaMedicamentosController@consultaMedicamentos')->name('consulta.medicamentos');
+
     });
 });
