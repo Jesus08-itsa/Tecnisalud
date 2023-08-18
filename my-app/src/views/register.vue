@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
 import Navbar from '../components/Navbar.vue';
 import axios from "axios"
 
-const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
 export default {
     data() {
@@ -24,7 +23,6 @@ export default {
             confirm_password:"",
             phone:"",
             rol:"",
-            token: csrfToken,
             error: false,
             error_msg: "",
         };
