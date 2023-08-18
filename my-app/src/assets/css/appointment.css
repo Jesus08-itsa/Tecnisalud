@@ -1,0 +1,53 @@
+
+.well {
+    width: 100%;
+    content:"";
+    z-index:-1;
+    padding: 70px 0;
+
+}
+.well-header {
+    font-size: 2em;
+    font-weight: bold;
+    color: #1E2749;
+    
+}
+
+#disabledSelect{
+    height: 30px;
+}
+/*
+.form-control {
+    height: 30px;
+}
+*/
+.form-group1 {
+    padding-bottom: 45px;
+    height: 5px;
+}
+
+
+
+#disabledSelect{
+    padding-bottom: 25px;
+}
+
+.input-group-addon,.fa> fa-calendar {
+    color: #FFE071;
+    background: #1E2749;
+    border: solid 1px #1E2749;
+}
+
+p, label, checkbox {
+    font-size: 1em;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+
+.header_p {
+    font-size: 1.1em;
+}
+
+.help-block {
+    color: #1E2749;
+}

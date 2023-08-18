@@ -1,0 +1,75 @@
+.bg-light {
+    background-color: #fff !important;
+    color: #364d59 !important;
+}
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.btn.btn-primary {
+    background: #207dff;
+    border: 1px solid #207dff !important;
+    color: #fff !important;
+}
+.slider-text h1 {
+    font-size: 64px;
+    color: #000000;
+    line-height: 1;
+    font-weight: 700;
+}
+.slider-text h1 {
+    font-size: 40px;
+}
+.slider-text .subheading {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #207dff;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+body {
+    line-height: 1.7;
+    color: #364d59 !important;
+    font-weight: 300;
+    font-size: 1rem;
+    background: #fff;
+}
+.hero-wrap2{
+    background-image: url(../women_page.jpg);
+    height: 588px; 
+    background-position: 50% -13.6813px;
+}
+.site-section {
+    padding: 5em 0;
+}
+.text-center {
+    text-align: center !important;
+}
+
+.practicing {
+    position: relative;
+}
+.practicing .practicing-inner {
+    position: relative;
+    padding: 40px;
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    font-size: 14px;
+}
+.practicing .wrap-icon {
+    position: relative;
+    display: block;
+    z-index: 2;
+}
+.practicing .practicing-inner h3 {
+    font-size: 20px;
+    color: #000;
+    font-weight: 700;
+}
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+    font-weight: 300;
+    color: #364d59;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
