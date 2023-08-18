@@ -19,13 +19,15 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['http://localhost:5173', 'http://localhost:8800'],
 
-    'allowed_origins_patterns' => [],
+    'Access-Control-Allow-Origin'  => ['http://localhost:5173', 'http://localhost:8800'],
+
+    'allowed_origins_patterns' => ['*'],
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['*'],
 
     'max_age' => 0,
 
