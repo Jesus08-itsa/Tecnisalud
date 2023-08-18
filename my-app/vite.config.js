@@ -1,4 +1,3 @@
-import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -8,9 +7,15 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  server: {
+    port: 8800,
+    proxy: {
+      '/api': 'http://localhost:8000', // Cambia esto según el puerto en el que se ejecute tu servidor Laravel
+    },
+  },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
+      '@': '/src', // Ajusta esta ruta según tu estructura de carpetas
+    },
+  },
 })

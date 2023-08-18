@@ -19,13 +19,13 @@ export default {
                 "usuario": this.usuario,
                 "password": this.password
             };
-            axios.post('https://api.solodata.es/auth', json) //TROCHA COLOCAS AQUI ADENTRO EL ROUTE DE LA API
+            axios.post('http://127.0.0.1:8000/login', json) //TROCHA COLOCAS AQUI ADENTRO EL ROUTE DE LA API
                 .then(data => {
                 //si el usuario esta registrado envia el OK y guarda el token de autenticacion
                 if (data.data.status == "ok") {
                     localStorage.token = data.data.result.token;
                     // Aquí asumimos que el token contiene información sobre el rol del usuario
-                    const userRole = data.data.result.role;
+                    //const userRole = data.data.result.role;
                     //if (userRole === "1") {
                     this.$router.push('/user'); // Redirige al usuario a la página de inicio de sesión
                     //} else if (userRole === "2") {

@@ -21,20 +21,6 @@ class RegisterRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
-        return [
-            'nombre' => 'required|min:3|max:50',
-            'correo' => 'required|min:3|max:50',
-            'usuario' => 'required|min:3',
-            'password' => 'required|min:3',
-            'password_confirmation' => 'required|same:password',
-            'cedula' => 'required|min:3',
-            'fecha_nacimiento' => 'required|date',
-            'telefono' => 'required|min:7',
-            'direccion' => 'required|min:5|max:40',
-        ];
-    }
 }
 
 
