@@ -6,7 +6,7 @@ import axios from 'axios';
 export default {
     data: function () {
         return {
-            usuario: "",
+            username: "",
             password: "",
             error: false,
             error_msg: "",
@@ -16,10 +16,10 @@ export default {
         login() {
             //coloca el usuario en un JSON
             let json = {
-                "usuario": this.usuario,
+                "username": this.username,
                 "password": this.password
             };
-            axios.post('https://api.solodata.es/auth', json) //TROCHA COLOCAS AQUI ADENTRO EL ROUTE DE LA API
+            axios.post('http://127.0.0.1:8000/login', json) //TROCHA COLOCAS AQUI ADENTRO EL ROUTE DE LA API
                 .then(data => {
                 //si el usuario esta registrado envia el OK y guarda el token de autenticacion
                 if (data.data.status == "ok") {
@@ -65,7 +65,7 @@ export default {
                         <form action="#" method="POST" v-on:submit.prevent="login">
                         <div class="form-group first">
                         <label for="username">Usuario</label>
-                        <input type="text" class="form-control" id="username" v-model="usuario">
+                        <input type="text" class="form-control" id="username" v-model="username">
                         </div>
                         <div class="form-group last mb-4">
                         <label for="password">Contraseña</label>

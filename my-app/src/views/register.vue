@@ -9,7 +9,6 @@ import Navbar from '../components/Navbar.vue';
 import axios from "axios"
 
 export default {
-    
     data: function () {
         return {
             name: "",
@@ -30,15 +29,16 @@ export default {
     methods: {
         handleSubmit(event) {
             event.preventDefault(); // Detener el comportamiento predeterminado del formulario
-            
+
             // Mostrar la alerta
             Swal.fire({
                 title: '¡Registro Existoso!',
-                text: 'Tu usuario a sido registrado existosamente.',
+                text: 'Tu usuario ha sido registrado existosamente.',
                 icon: 'success',
                 confirmButtonText: 'Aceptar',
             });
             let json = {
+                _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 "nombre": this.name,
                 "cedula": this.id_user,
                 "correo": this.email,
@@ -50,49 +50,49 @@ export default {
                 "password": this.password,
                 "password_confirmation":this.confirm_password
             };
-            axios.post('http://127.0.0.1:8000/register', json) //TROCHA COLOCAS AQUI ADENTRO EL ROUTE DE LA API
+            axios.post('http://127.0.0.1:8000/register', json)
                 .then(data => {
-                //si el usuario esta registrado envia el OK y guarda el token de autenticacion
-                if (data.data.status == "ok") {
-                    this.$router.push('/login');
-                    //this.$store.commit('setAuthentication', true);
-                    console.log(data)
-                }
-                else {
-                    this.error = true;
-                    this.error_msg = data.data.result.error_msg;
-                }
-            });
+                    if (data.data.status == "ok") {
+                        this.$router.push('/login');
+                        console.log(data)
+                    }
+                    else {
+                        this.error = true;
+                        this.error_msg = data.data.result.error_msg;
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         },
     },
     components: { Navbar }
-
 };
 </script>
 
 <template>
   <Navbar />
-<div class="login">
+  <div class="login">
     <div class="container_login">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="../assets/login-img.jpeg" alt="Image" class="img-fluid">
-                </div>
-                    <div class="col-md-6 contents">
-                    <div class="row justify-content-center">
-                    <div class="col-md-8">
-                    <div class="mb-4">
-                    <h3>Registrar</h3>
-                    <p class="mb-4">Ingresa tus datos basicos para asi crear un usuario con nosotros.</p>
-                    </div>
-                        <form action="#" method="POST" @submit="handleSubmit">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="../assets/login-img.jpeg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+                <h3>Registrar</h3>
+                <p class="mb-4">Ingresa tus datos básicos para crear un usuario con nosotros.</p>
+              </div>
+              <form action="#" method="POST" @submit="handleSubmit">
 
-                        <div class="form-group last mb-4">
-                        <label for="Nombre">Nombre Completo</label>
-                        <input type="text" class="form-control" id="name" v-model="name" required>
-                        </div>
-                        <div class="form-group last mb-4">
-                        <label for="Identificacion">Numero de identificacion</label>
+                <div class="form-group last mb-4">
+                  <label for="Nombre">Nombre Completo</label>
+                  <input type="text" class="form-control" id="name" v-model="name" required>
+                </div>
+                 <div class="form-group last mb-4">
+                        <label for="Identificacion">Número de identificación</label>
                         <input type="text" class="form-control" id="id_user" v-model="id_user" required>
                         </div>
                         <div class="form-group last mb-4">
@@ -100,11 +100,11 @@ export default {
                         <input type="email" class="form-control" id="email" v-model="email" required>
                         </div>
                         <div class="form-group last mb-4">
-                        <label for="Correo Electronico">Direccion</label>
+                        <label for="Correo Electronico">Dirección</label>
                         <input type="text" class="form-control" id="address" v-model="address" required>
                         </div>
                         <div class="form-group last mb-4">
-                        <label for="Correo Electronico">Telefono</label>
+                        <label for="Correo Electronico">Teléfono</label>
                         <input type="text" class="form-control" id="phone" v-model="phone" required>
                         </div>
                         <div class="form-group last mb-4">
@@ -112,10 +112,10 @@ export default {
                         <input type="date" class="form-control" id="birthdate" v-model="date" required>
                         </div>
                         <div class="form-group last mb-4">
-                        <label for="floatingPasswordConfirm">¿Que tipo de usuario va a ser?</label><br>
+                        <label for="floatingPasswordConfirm">¿Qué tipo de usuario vas a ser?</label><br>
                         <select id="Select" class="form-control" v-model="rol">
                         <option value="1">Doctor</option>
-                        <option value="1">Paciente</option>
+                        <option value="2">Paciente</option>
                         </select>
                         </div>
                         <hr>
@@ -133,16 +133,14 @@ export default {
                         </div>
                         <div class="d-flex mb-5 align-items-center">
                         <div class="control__indicator"></div>
-                        <span class="ml-auto"><a href="/login" class="forgot-pass">¿Ya cuentas con un usuario?, Inicia sesion</a></span>
+                        <span class="ml-auto"><a href="/login" class="forgot-pass">¿Ya tienes una cuenta?, Inicia sesión</a></span>
                         </div>
-                        <input type="submit" id="submit" value="Registrar" class="btn btn-block btn-primary">
-                        </form>
-                    </div>
-                </div>
+                <input type="submit" id="submit" value="Registrar" class="btn btn-block btn-primary">
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 </template>
-
-
